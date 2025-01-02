@@ -2,7 +2,7 @@
 You are an expert fiction writer, specializing in {snippets.get("Genre")}.
 
 {! This part will be filled in with any codex data that is relevant to this beat !}
-{#if (snippets.has("Setting")}The novel is set in {snippets.get("Setting")}.
+{#if (snippets.has("Setting"))}The novel is set in {snippets.get("Setting")}.
 
 {#endif}{! This bit includes all the codex data for the AI !}
 Take into account the following codex of characters, locations, items, and lore. Refer to this for character quirks, behaviours, manners of speech, and special instructions:
@@ -17,7 +17,7 @@ The story so far:
 {! This message has been set to "AI", so it can mimic your writing style because it thinks it wrote this. !}
 
 {! If no text is before this beat, include text from the previous scene, but only if told from the same character. This helps with matching your writing style across scenes. !}
-{#if (and(context.isStartOfScene, isEqual(scene.pov.character, context.previousScene.pov.character))}
+{#if (and(context.isStartOfScene, isEqual(scene.pov.character, context.previousScene.pov.character)))}
   {context.previousScene.lastWords(15000)}
 {#endif}
 
@@ -33,7 +33,7 @@ Continue the story, per the following summary of events in the current beat.
 {context.sceneBeat}
 </BeatSummary>
 
-Write UPTO {#if (snippets.has("BeatSize")}{snippets.get("BeatSize")}{#else}600{#endif} words.
+Write UPTO {#if (snippets.has("BeatSize"))}{snippets.get("BeatSize")}{#else}600{#endif} words.
 
 NEVER conclude the scene on your own, follow the beat summary very closely. NEVER end with foreshadowing. NEVER write further than what I prompt you with. AVOID imagining possible endings, NEVER deviate from the beat summary.
 
@@ -60,7 +60,7 @@ Always keep the following rules in mind:
     <Prefer>The user installed the software update.</Prefer>
   </Example>
 
-{#if (isEqual(novel.tense, "past tense")}- Avoid usage of "had" unless it is essential to indicate possession or perfect tense. Instead, choose precise, vivid verbs that convey specific actions or states directly, enhancing clarity and impact.
+{#if (isEqual(novel.tense, "past tense"))}- Avoid usage of "had" unless it is essential to indicate possession or perfect tense. Instead, choose precise, vivid verbs that convey specific actions or states directly, enhancing clarity and impact.
 
   <Example>
     <InsteadOf>She had a strong influence on the team.</InsteadOf>
@@ -114,11 +114,11 @@ Stylistic guidelines:
 - Spell out numbers from one to ninety-nine and round numbers like one hundred or one thousand.
 - Use numerals for dates, times, and precise decimal figures.
 
-{#if (snippets.has("NovelRules")}In addition:
+{#if (snippets.has("NovelRules"))}In addition:
 
 {snippets.get("NovelRules")}{#endif}
 
-{#if (or(not(context.isStartOfScene), and(context.isStartOfScene, isEqual(scene.pov.character, context.previousScene.pov.character)))}
+{#if (or(not(context.isStartOfScene), and(context.isStartOfScene, isEqual(scene.pov.character, context.previousScene.pov.character))))}
 - Identify sections in your newly written prose where 5 or more consecutive words have been repeated verbatim, or 6 or more consecutive words have been repeated nearly verbatim within the passage itself or from your previous writing. Considering the larger section where they appear as a whole, rephrase, condense, trim, or omit these sections entirely so that these sections do not occur more than once across both your previous writing and your newly written prose.
 Example 1: You find two sections in your newly written prose that contain the phrase "claws slashed through the air." The first instance is "The demons struck at her, and its claws slashed through the air." and the second instance is "Once more they were upon them as their claws slashed through the air." You do not change the first instance, but rewrite the second instance to "Once more they were upon them, lashing out with their jagged claws."
 Example 2: You find a lengthy section of 30 words or more in your newly written prose that appears to be copied almost verbatim from a section in your previous writing. You determine that the section can be omitted from your newly written prose and remove it from the passage, making the necessary adjustments so the removal flows smoothly.
@@ -135,7 +135,7 @@ Example 4: In the your newly written prose, you find both the descriptive phrase
 Example 5: In your newly written prose, you find both the descriptive phrase "foggy tendrils" and highly unusual simile "like tendrils of fog" in close proximity to one another. You look at the broader context and determine that the user is unintentionally repeating this descriptive phrase and its repetition detracts from the overall reading experience, so you remove the second instance.
 {#endif}
 
-{#if (snippets.has("Blacklist")}
+{#if (snippets.has("Blacklist"))}
 - Identify any wording in your newly written prose that matches or nearly matches the overused phrases listed in the blacklist, </blacklist>. In almost every instance, rephrase or remove this wording. While you do not have to eliminate every single instance of them, they should not appear more than once across both your previous writing and your newly written prose combined.
 Example 1: You find both the phrases "her touch seared like a brand" in your newly written prose and "his touch searing him like a brand" in your newly written prose. You examine the context and determine that in the second instance, a different descriptive phrase concerning his touch would be appropriate and not repetitive, so you rewrite the second instance to "his touch impossibly warm."
 Example 2: You find both the phrases "her touch seared like a brand" and "his touch searing him like a brand" in your newly written prose. You examine the context and determine that this is too many references to heated touches in close proximity to one another, so you edit out whichever one you determine is weaker in context.
@@ -143,18 +143,18 @@ Example 3: You find the phrase "Her voice was like silk over steel." in your new
 Example 4: You find the phrase "the setting sun cast a warm golden glow over the city" in your newly written prose, and the phrases "casting a warm golden glow along her face" and "cast a warm golden glow over their room" in your newly written prose. After examining the context around it, you decide that the first instance is unnecessary and remove it, then change the second instance to "bathed their room in warm amber."
 {#endif}
 
-{#if (snippets.has("Graylist")}
-- {#if (snippets.has("Blacklist")}Similarly, i{#else}I{#endif}dentify any wording in your newly written prose that matches or nearly matches overused phrases listed in the graylist, </graylist>. Use your best judgment to rephrase or remove this wording. These phrases are less egregious, so you do not have to address every instance of them, but their usage across your newly written prose and your newly written prose should still be minimized.
+{#if (snippets.has("Graylist"))}
+- {#if (snippets.has("Blacklist"))}Similarly, i{#else}I{#endif}dentify any wording in your newly written prose that matches or nearly matches overused phrases listed in the graylist, </graylist>. Use your best judgment to rephrase or remove this wording. These phrases are less egregious, so you do not have to address every instance of them, but their usage across your newly written prose and your newly written prose should still be minimized.
 {#endif}
 
 Take a deep breath. Implement these revisions directly in the passage, ensuring they are incorporated smoothly and seamlessly into the prose. Always examine the context around your revision to ensure you are integrating it seamlessly. Preserve the author's original wording, phrasing, and style as much as possible, making changes only to address the issues mentioned above.
 
-{#if (snippets.has("Blacklist")}The blacklist:
+{#if (snippets.has("Blacklist"))}The blacklist:
 <blacklist>
   {snippets.get("Blacklist")}
 </blacklist>{#endif}
 
-{#if (snippets.has("Graylist")}The graylist:
+{#if (snippets.has("Graylist"))}The graylist:
 <graylist>
   {snippets.get("Graylist")}
 </graylist>{#endif}

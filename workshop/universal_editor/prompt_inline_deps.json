@@ -8,7 +8,7 @@
     },
     {
       "type": "user",
-      "text": "{#if (args.includeAllText}\nHere is the full text of the novel you will be proof reading:\n\n<TextToAnalyze>\n{novel.fullText}\n</TextToAnalyze>\n{#endif}\n\n{#if (args.scene}\nHere is the full text of the scene ({scene.title}) you will be proof reading:\n\n<TextToAnalyze>\n{scene.content}\n</TextToAnalyze>\n{#endif}"
+      "text": "{#if (args.includeAllText)}\nHere is the full text of the novel you will be proof reading:\n\n<TextToAnalyze>\n{novel.fullText}\n</TextToAnalyze>\n{#endif}\n\n{#if (args.scene)}\nHere is the full text of the scene ({scene.title}) you will be proof reading:\n\n<TextToAnalyze>\n{scene.content}\n</TextToAnalyze>\n{#endif}"
     }
   ],
   "models": [

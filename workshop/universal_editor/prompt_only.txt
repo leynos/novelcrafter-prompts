@@ -77,7 +77,7 @@ In each case, include the sentence containing the subordinate clause(s) as a quo
 
 Suggested re-wording: Exhausted from a long day, she still went to the gym a few blocks away to maintain her fitness routine.
 </ExampleResponse>
-{#if (args.includeAllText}
+{#if (args.includeAllText)}
 Here is the full text of the novel you will be proof reading:
 
 <TextToAnalyze>
@@ -85,7 +85,7 @@ Here is the full text of the novel you will be proof reading:
 </TextToAnalyze>
 {#endif}
 
-{#if (args.scene}
+{#if (args.scene)}
 Here is the full text of the scene ({scene.title}) you will be proof reading:
 
 <TextToAnalyze>
