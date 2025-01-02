@@ -53,7 +53,7 @@ Always keep the following rules in mind:
   </Example>
   <Example>
     <InsteadOf>The results were analysed by the team.</InsteadOf>
-    <InsteadOf>The team analysed the results.</Prefer>
+    <Prefer>The team analysed the results.</Prefer>
   </Example>
   <Example>
     <InsteadOf>The software update was installed by the user.</InsteadOf>
