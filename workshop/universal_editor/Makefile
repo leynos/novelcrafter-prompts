@@ -6,6 +6,7 @@ prompt_only.txt: prompt_inline_deps.json
 
 README.md: prompt_inline_deps.json
 	jq -r .description <$< | sed 's/<p>\|<\/p>/\n/g' >$@
+	jq -r .description <$< | sed 's/<p>\|<\/p>/\n/g' | sed 's/<strong>\|<\/strong>/**/g' |awk 'BEGIN {inli=0} /<li>/ {inli=1; next} /<\/li>/ {inli=0; print ""; next} inli==1 {print "- " $$0} inli==0 {print}' >$@
 
 %.json: %.b64
 	base64 -d <$< | gunzip | jq . > $@
